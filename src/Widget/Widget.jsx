@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import styles from './Widget.module.css';
 import { getRandomVerse } from './widget';
 
-export default function Widget() {
+export default function Widget({ testament }) {
     const [data, setData] = useState({
         book: "none",
         chapter: 0,
@@ -11,7 +11,7 @@ export default function Widget() {
     });
 
     useEffect(() => {
-        getRandomVerse("both").then(response => {
+        getRandomVerse(testament).then(response => {
             setData({
                 book: response.book,
                 chapter: response.chapter,
