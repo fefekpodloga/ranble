@@ -1,4 +1,4 @@
-import Widget from "./Widget/Widget"
+import Widget from "./Widget/Widget";
 
 function App() {
     return (
@@ -10,4 +10,4 @@ function App() {
     );
 }
 
-export default App
+export default App;

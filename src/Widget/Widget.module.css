@@ -1,18 +1,8 @@
 .widget {
-    border: 2px solid black;
-    border-radius: 5px;
-    background-color: whitesmoke;
+    border: 2px solid #FFFFFF;
+    border-radius: 15px;
+    background-color: #FFFFFF;
     width: auto;
     margin: 10px;
     padding: 15px;
-}
-
-.button {
-    border: 2px solid black;
-    border-radius: 5px;
-    background-color: royalblue;
-    color: white;
-    width: 150px;
-    height: 50px;
-    cursor: pointer;
 }
