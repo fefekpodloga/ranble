@@ -70,13 +70,20 @@ const NEW_TESTAMENT = [
 ];
 const BIBLE = [...OLD_TESTAMENT, ...NEW_TESTAMENT];
 
-export async function getRandomVerse(testament) {
+type Verse = {
+    book: string,
+    chapter: number,
+    verse: number,
+    text: string,
+};
+
+export async function getRandomVerse(testament: string): Promise<Verse | undefined> {
     try {
-        let field;
+        let field: { book: string, chapters: number }[];
         if (testament === "old") field = OLD_TESTAMENT;
         else if (testament === "new") field = NEW_TESTAMENT;
         else field = BIBLE;
-        
+
         const bookIndex = Math.floor(Math.random() * field.length) + 1;
         const getBookData = field[bookIndex];
         const book = getBookData.book;
@@ -96,10 +103,11 @@ export async function getRandomVerse(testament) {
         return {
             book: book,
             chapter: chapter,
-            verse: verse,
+            verse: Number(verse),
             text: text,
         };
     } catch (error) {
         console.error(error);
+        
     }
 }
