@@ -7,7 +7,7 @@ export default function Widget(pops: { testament: string }) {
         book: "none",
         chapter: 0,
         verse: 0,
-        text: "Cannot load...",
+        text: "Loading...",
     });
 
     useEffect(() => {
@@ -29,8 +29,8 @@ export default function Widget(pops: { testament: string }) {
 
     return (
         <div className={styles.widget}>
-            <h1>{data.text}</h1>
-            <h2>{data.book} {data.chapter}:{data.verse}</h2>
+            <h2>{data.text}</h2>
+            <h3>{data.book} {data.chapter}:{data.verse}</h3>
         </div>
     );
 }
