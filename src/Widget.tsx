@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import styles from './Widget.module.css';
 import { getRandomVerse } from './widget';
 
 export default function Widget(pops: { testament: string }) {
@@ -28,7 +27,7 @@ export default function Widget(pops: { testament: string }) {
     }, []);
 
     return (
-        <div className={styles.widget}>
+        <div className="widget">
             <h2>{data.text}</h2>
             <h3>{data.book} {data.chapter}:{data.verse}</h3>
         </div>
