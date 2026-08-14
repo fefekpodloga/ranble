@@ -25,6 +25,10 @@ body {
     height: auto;
 }
 
+.navigation {
+    justify-content: left;
+}
+
 .select {
     width: auto;
     border: 2px royalblue solid;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getRandomVerse } from './widget';
 
-export default function Widget(pops: { testament: string }) {
+export default function Widget(pops: { testament: string, translation: string }) {
     const [data, setData] = useState({
         book: "none",
         chapter: 0,
@@ -10,7 +10,7 @@ export default function Widget(pops: { testament: string }) {
     });
 
     useEffect(() => {
-        getRandomVerse(pops.testament).then(response => {
+        getRandomVerse(pops.testament, pops.translation).then(response => {
             if (response !== undefined) {
                 setData({
                     book: response.book,
@@ -30,6 +30,7 @@ export default function Widget(pops: { testament: string }) {
         <div className="widget">
             <h2>{data.text}</h2>
             <h3>{data.book} {data.chapter}:{data.verse}</h3>
+            <p>{pops.translation} using <a href='https://github.com/wldeh/bible-api'>Henok Woldesenbet's bible-api (github)</a></p>
         </div>
     );
 }
