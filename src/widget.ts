@@ -27,16 +27,6 @@ function checkTranslation(testament: string, translation: string): TranslationLi
     }
 }
 
-export function getRawVerse(testament: string, translation: string): Verse {
-    let verse: Verse = VERSE_TEMPLATE;
-
-    getRandomVerse(testament, translation).then(response => {
-        if (response !== undefined) verse = response;
-    });
-
-    return verse;
-}
-
 export async function getRandomVerse(testament: string, translation: string): Promise<Verse | undefined> {
     try {
         const field = checkTranslation(testament, translation);

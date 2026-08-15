@@ -16,6 +16,7 @@ export default function App() {
         <div className="box">
             <NavigationBar testament={testament} setTestament={setTestament} translation={translation} setTranslation={setTranslation} setData={setData} />
             <Widget testament={testament} translation={translation} data={data} setData={setData}/>
+            <p>Tip: remember to give refreshing some time!</p>
         </div>
     );
 }

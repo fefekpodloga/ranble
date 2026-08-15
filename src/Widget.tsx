@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { getRawVerse } from './widget';
+import { getRandomVerse } from './widget';
 import type { Verse } from './widget';
 
 type WidgetProps = {
@@ -11,8 +11,10 @@ type WidgetProps = {
 
 export default function Widget({ testament, translation, data, setData }: WidgetProps) {
     useEffect(() => {
-        setData(getRawVerse(testament, translation));
-    }, []);
+        getRandomVerse(testament, translation).then(response => {
+            if (response !== undefined) setData(response);
+        });
+    }, [])
 
     return (
         <div className="widget">

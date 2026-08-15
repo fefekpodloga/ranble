@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getRawVerse, type Verse } from "./widget";
+import { getRandomVerse, type Verse } from "./widget";
 
 type NavigationBarProps = {
     testament: string,
@@ -12,7 +12,12 @@ type NavigationBarProps = {
 export default function NavigationBar({ testament, setTestament, translation, setTranslation, setData }: NavigationBarProps) {
     const changeTestament = (event: any) => setTestament(event.target.value);
     const changeTranslation = (event: any) => setTranslation(event.target.value);
-    const refresh = () => setData(getRawVerse(testament, translation));
+
+    const refresh = () => {
+        getRandomVerse(testament, translation).then(response => {
+            if (response !== undefined) setData(response);
+        });
+    }
 
     useEffect(() => {
         localStorage.setItem("testament", testament);
