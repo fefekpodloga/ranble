@@ -1,36 +1,24 @@
-import { useEffect, useState } from 'react';
-import { getRandomVerse } from './widget';
+import { useEffect } from 'react';
+import { getRawVerse } from './widget';
+import type { Verse } from './widget';
 
-export default function Widget(pops: { testament: string, translation: string }) {
-    const [data, setData] = useState({
-        book: "none",
-        chapter: 0,
-        verse: 0,
-        text: "Loading...",
-    });
+type WidgetProps = {
+    testament: string,
+    translation: string,
+    data: Verse,
+    setData: React.Dispatch<React.SetStateAction<Verse>>,
+};
 
+export default function Widget({ testament, translation, data, setData }: WidgetProps) {
     useEffect(() => {
-        getRandomVerse(pops.testament, pops.translation).then(response => {
-            if (response !== undefined) {
-                setData({
-                    book: response.book,
-                    chapter: response.chapter,
-                    verse: response.verse,
-                    text: response.text,
-                });
-            } else {
-                console.log("response is undefined..?");
-            }
-        }).catch(error => {
-            console.error(error);
-        });
+        setData(getRawVerse(testament, translation));
     }, []);
 
     return (
         <div className="widget">
             <h2>{data.text}</h2>
             <h3>{data.book} {data.chapter}:{data.verse}</h3>
-            <p>{pops.translation} using <a href='https://github.com/wldeh/bible-api'>Henok Woldesenbet's bible-api (github)</a></p>
+            <p>{translation} using <a href='https://github.com/wldeh/bible-api'>Henok Woldesenbet's bible-api (github)</a></p>
         </div>
     );
 }

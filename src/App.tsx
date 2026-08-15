@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
 import Widget from "./Widget";
+import NavigationBar from "./NavigationBar";
+import { useState } from "react";
+import { VERSE_TEMPLATE } from "./widget";
 
 export default function App() {
     const [testament, setTestament] = useState(() => {
@@ -8,33 +10,12 @@ export default function App() {
     const [translation, setTranslation] = useState(() => {
         return localStorage.getItem("translation") || "en-kjv";
     });
+    const [data, setData] = useState(VERSE_TEMPLATE);
 
-    const changeTestament = (e: any) => setTestament(e.target.value);
-    const changeTranslation = (e: any) => setTranslation(e.target.value);
-
-    useEffect(() => {
-        localStorage.setItem("testament", testament);
-    }, [testament]);
-    useEffect(() => {
-        localStorage.setItem("translation", translation);
-    });
-    
     return (
         <div className="box">
-            <nav className="navigation">
-                <select className="select" value={testament} onChange={changeTestament}>
-                    <option value={"old"}>Old Testament</option>
-                    <option value={"new"}>New Testament</option>
-                    <option value={"both"}>Both</option>
-                </select>
-                <select className="select" value={translation} onChange={changeTranslation}>
-                    <option value={"en-kjv"}>en-kjv</option>
-                    <option value={"en-asv"}>en-asv</option>
-                    <option value={"en-bsb"}>en-bsb</option>
-                    <option value={"en-dra"}>en-dra</option>
-                </select>
-            </nav>
-            <Widget testament={testament} translation={translation}/>
+            <NavigationBar testament={testament} setTestament={setTestament} translation={translation} setTranslation={setTranslation} setData={setData} />
+            <Widget testament={testament} translation={translation} data={data} setData={setData}/>
         </div>
     );
 }

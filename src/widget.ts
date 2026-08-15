@@ -1,11 +1,18 @@
 import { TRANSLATIONS } from "./translations";
 
-type Verse = {
+export type Verse = {
     book: string,
     chapter: number,
     verse: number,
     text: string,
 };
+
+export const VERSE_TEMPLATE = {
+    book: "Loading...",
+    chapter: 0,
+    verse: 0,
+    text: "Loading..."
+}
 
 type TranslationLibrary = {
     book: string,
@@ -18,6 +25,16 @@ function checkTranslation(testament: string, translation: string): TranslationLi
         if (testament === "new") return TRANSLATIONS.ennew;
         if (testament === "both") return TRANSLATIONS.enboth;
     }
+}
+
+export function getRawVerse(testament: string, translation: string): Verse {
+    let verse: Verse = VERSE_TEMPLATE;
+
+    getRandomVerse(testament, translation).then(response => {
+        if (response !== undefined) verse = response;
+    });
+
+    return verse;
 }
 
 export async function getRandomVerse(testament: string, translation: string): Promise<Verse | undefined> {
@@ -48,7 +65,6 @@ export async function getRandomVerse(testament: string, translation: string): Pr
             text: text,
         };
     } catch (error) {
-        console.error(error);
-        
+        console.error(error);   
     }
 }
