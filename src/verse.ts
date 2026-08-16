@@ -1,4 +1,4 @@
-import { TRANSLATIONS } from "./translations";
+import { checkTranslation } from "./translations";
 
 export type Verse = {
     book: string,
@@ -12,19 +12,6 @@ export const VERSE_TEMPLATE = {
     chapter: 0,
     verse: 0,
     text: "Loading..."
-}
-
-type TranslationLibrary = {
-    book: string,
-    chapters: number,
-};
-
-function checkTranslation(testament: string, translation: string): TranslationLibrary[] | undefined {
-    if (translation.startsWith("en")) {
-        if (testament === "old") return TRANSLATIONS.enold;
-        if (testament === "new") return TRANSLATIONS.ennew;
-        if (testament === "both") return TRANSLATIONS.enboth;
-    }
 }
 
 export async function getRandomVerse(testament: string, translation: string): Promise<Verse | undefined> {

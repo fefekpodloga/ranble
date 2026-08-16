@@ -70,9 +70,15 @@ const EN_NEW_TESTAMENT = [
 ];
 const EN_BIBLE = [...EN_OLD_TESTAMENT, ...EN_NEW_TESTAMENT];
 
-export const TRANSLATIONS = {
-    // english
-    enold: EN_OLD_TESTAMENT,
-    ennew: EN_NEW_TESTAMENT,
-    enboth: EN_BIBLE,
+type TranslationLibrary = {
+    book: string,
+    chapters: number,
+};
+
+export function checkTranslation(testament: string, translation: string): TranslationLibrary[] | undefined {
+    if (translation.startsWith("en")) {
+        if (testament === "old") return EN_OLD_TESTAMENT;
+        if (testament === "new") return EN_NEW_TESTAMENT;
+        if (testament === "both") return EN_BIBLE;
+    }
 }

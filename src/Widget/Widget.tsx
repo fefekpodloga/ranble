@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { getRandomVerse } from './widget';
-import type { Verse } from './widget';
+import { getRandomVerse, type Verse } from '../verse';
 import styles from './Widget.module.css';
 
 type WidgetProps = {

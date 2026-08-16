@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getRandomVerse, type Verse } from "./widget";
+import { getRandomVerse, type Verse } from "../verse";
 import styles from './NavigationBar.module.css';
 
 type NavigationBarProps = {
