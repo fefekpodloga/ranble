@@ -1,0 +1,28 @@
+.navigation {
+    justify-content: left;
+}
+
+.select {
+    width: auto;
+    border: 2px royalblue solid;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 10px;
+    background-color: var(--widget-bg);
+    color: var(--main-color);
+}
+
+.refresh {
+    width: auto;
+    border: 2px royalblue solid;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 10px;
+    background-color: var(--widget-bg);
+    color: var(--main-color);
+}
+.refresh:hover {
+    color: white;
+    background-color: royalblue;
+    cursor: pointer;
+}

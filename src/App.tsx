@@ -4,6 +4,9 @@ import { useState } from "react";
 import { VERSE_TEMPLATE } from "./widget";
 
 export default function App() {
+    // remember to change manifest.json 
+    const version = "v.1.3.0";
+
     const [testament, setTestament] = useState(() => {
         return localStorage.getItem("testament") || "new";
     });
@@ -16,7 +19,7 @@ export default function App() {
         <div className="box">
             <NavigationBar testament={testament} setTestament={setTestament} translation={translation} setTranslation={setTranslation} setData={setData} />
             <Widget testament={testament} translation={translation} data={data} setData={setData}/>
-            <p>Tip: remember to give refreshing some time!</p>
+            <p>Tip: remember to give refreshing some time! {version}</p>
         </div>
     );
 }

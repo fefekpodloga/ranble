@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { getRandomVerse, type Verse } from "./widget";
+import styles from './NavigationBar.module.css';
 
 type NavigationBarProps = {
     testament: string,
@@ -27,19 +28,19 @@ export default function NavigationBar({ testament, setTestament, translation, se
     }, [translation]);
     
     return (
-        <nav className="navigation">
-            <select className="select" value={testament} onChange={changeTestament}>
+        <nav className={styles.navigation}>
+            <select className={styles.select} value={testament} onChange={changeTestament}>
                 <option value={"old"}>Old Testament</option>
                 <option value={"new"}>New Testament</option>
                 <option value={"both"}>Both</option>
             </select>
-            <select className="select" value={translation} onChange={changeTranslation}>
+            <select className={styles.select} value={translation} onChange={changeTranslation}>
                 <option value={"en-kjv"}>en-kjv</option>
                 <option value={"en-asv"}>en-asv</option>
                 <option value={"en-bsb"}>en-bsb</option>
                 <option value={"en-dra"}>en-dra</option>
             </select>
-            <button className="refresh" onClick={refresh}>⟳ Refresh</button>
+            <button className={styles.refresh} onClick={refresh}>⟳ Refresh</button>
         </nav>
     );
 }
